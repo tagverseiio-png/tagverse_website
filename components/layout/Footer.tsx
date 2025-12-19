@@ -2,7 +2,8 @@
 
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Github, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Github, Twitter, Linkedin, Instagram, X } from 'lucide-react';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 const Footer = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -56,7 +57,7 @@ const Footer = () => {
             {/* Footer Content */}
             <div className="relative z-20 max-w-6xl mx-auto px-6 py-10">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10 footer-grid">
-                    <div className="col-span-1 md:col-span-1 footer-col">
+                    <ScrollReveal className="col-span-1 md:col-span-1 footer-col" delay={0}>
                         <div className="flex items-center gap-4 mb-8">
                             <div className="w-10 h-10 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center text-white font-serif text-xl border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)]">T</div>
                             <span className="text-xl font-serif text-white tracking-tight">TagVerse</span>
@@ -64,9 +65,9 @@ const Footer = () => {
                         <p className="text-white/60 text-sm leading-loose font-light">
                             An enterprise solutions provider of rare intelligence and vision. Wielding the power of AI with masterful restraint.
                         </p>
-                    </div>
+                    </ScrollReveal>
 
-                    <div className="col-span-1 footer-col">
+                    <ScrollReveal className="col-span-1 footer-col" delay={100}>
                         <h4 className="font-semibold text-white mb-8 tracking-widest text-[10px] uppercase opacity-80">Explore</h4>
                         <ul className="space-y-4 text-sm text-white/50 font-light">
                             {['About', 'Services', 'Portfolio', 'Insights'].map(item => (
@@ -78,29 +79,29 @@ const Footer = () => {
                                 </li>
                             ))}
                         </ul>
-                    </div>
+                    </ScrollReveal>
 
-                    <div className="col-span-1 footer-col">
+                    <ScrollReveal className="col-span-1 footer-col" delay={200}>
                         <h4 className="font-semibold text-white mb-8 tracking-widest text-[10px] uppercase opacity-80">Legal</h4>
                         <ul className="space-y-4 text-sm text-white/50 font-light">
                             {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map(item => (
                                 <li key={item}><Link href="#" className="hover:text-white transition-colors duration-300">{item}</Link></li>
                             ))}
                         </ul>
-                    </div>
+                    </ScrollReveal>
 
-                    <div className="col-span-1 footer-col">
+                    <ScrollReveal className="col-span-1 footer-col" delay={300}>
                         <h4 className="font-semibold text-white mb-8 tracking-widest text-[10px] uppercase opacity-80">Connect</h4>
                         <div className="text-sm text-white/50 font-light mb-4 hover:text-white transition-colors cursor-pointer">Tagverse.iio@gmail.com </div>
                         <div className="text-sm text-white/50 font-light mb-8">+91 99419 68238</div>
                         <div className="flex gap-4">
-                            {[<Linkedin key="l" size={18} />, <Twitter key="t" size={18} />, <Instagram key="g" size={18} />].map((icon, i) => (
+                            {[<Linkedin key="l" size={18} />, <X key="t" size={18} />, <Instagram key="g" size={18} />].map((icon, i) => (
                                 <div key={i} className="w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:border-white/30 hover:bg-white/10 hover:text-white transition-all duration-500 cursor-pointer flex items-center justify-center text-white/40 backdrop-blur-sm">
                                     {icon}
                                 </div>
                             ))}
                         </div>
-                    </div>
+                    </ScrollReveal>
                 </div>
 
                 <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 footer-bottom">

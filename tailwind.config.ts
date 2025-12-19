@@ -67,6 +67,7 @@ const config: Config = {
         signature: {
           start: '#A29BFE', // Purple gradient start
           end: '#6A4C93',   // Purple gradient end
+          purple: '#6A4C93',
         },
         subtext: {
           DEFAULT: '#6B7280', // Blue-gray for subtext

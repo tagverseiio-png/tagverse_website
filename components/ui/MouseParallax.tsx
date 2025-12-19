@@ -17,8 +17,8 @@ const MouseParallax = ({ children, className = '', strength = 0.05 }: MouseParal
     const mouseY = useMotionValue(0);
 
     // Smooth out the mouse movement
-    const smoothX = useSpring(mouseX, { stiffness: 100, damping: 20 });
-    const smoothY = useSpring(mouseY, { stiffness: 100, damping: 20 });
+    const smoothX = useSpring(mouseX, { stiffness: 50, damping: 30 });
+    const smoothY = useSpring(mouseY, { stiffness: 50, damping: 30 });
 
     // Transform mouse position to element movement
     // if strength is 0.1 and screen is 1000px wide, max move is 50px

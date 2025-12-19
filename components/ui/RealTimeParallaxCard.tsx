@@ -50,6 +50,10 @@ const RealTimeParallaxCard = ({ title, description, icon: Icon, stats, features,
 
     return (
         <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             ref={ref}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -58,50 +62,54 @@ const RealTimeParallaxCard = ({ title, description, icon: Icon, stats, features,
                 rotateX,
                 transformStyle: "preserve-3d",
             }}
-            className={`relative h-full w-full rounded-3xl bg-white/80 backdrop-blur-xl border border-white/20 shadow-xl transition-shadow duration-500 hover:shadow-2xl hover:shadow-signature-start/20 group ${className}`}
+            className={`relative h-auto sm:h-full w-full rounded-[2rem] bg-white/80 backdrop-blur-xl border border-white/40 shadow-xl transition-all duration-500 hover:shadow-2xl hover:shadow-signature-start/20 group ${className}`}
         >
             <div
                 style={{
                     transform: "translateZ(75px)",
                     transformStyle: "preserve-3d",
                 }}
-                className="absolute inset-4 grid place-content-center rounded-xl bg-white shadow-lg"
+                className="absolute inset-2 sm:inset-4 hidden sm:grid place-content-center rounded-2xl bg-white shadow-lg pointer-events-none"
             >
-                {/* Internal Layer - Icon & Title */}
-                <div
-                    style={{ transform: "translateZ(50px)" }}
-                    className="flex flex-col items-center justify-center p-6 text-center h-full w-full"
-                >
-                    <div className="w-16 h-16 rounded-2xl bg-porcelain group-hover:bg-midnight group-hover:text-white transition-all duration-500 flex items-center justify-center text-midnight shadow-sm mb-6">
-                        <Icon size={32} strokeWidth={1.5} />
-                    </div>
-                    <h3 className="text-2xl font-serif text-midnight mb-4">{title}</h3>
-                    <p className="text-subtext font-light text-sm leading-relaxed mb-6 line-clamp-3 group-hover:line-clamp-none transition-all">
-                        {description}
-                    </p>
+                {/* Desktop Inner Frame - Hidden on Mobile to reduce clutter */}
+            </div>
 
-                    {/* Hidden Details Revealed on Hover */}
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 w-full">
-                        {stats && (
-                            <div className="grid grid-cols-2 gap-4 mb-4 border-t border-subtext/10 pt-4">
-                                {stats.map((stat, idx) => (
-                                    <div key={idx} className="text-center">
-                                        <div className="text-signature-start font-bold text-lg">{stat.value}</div>
-                                        <div className="text-xs text-subtext uppercase tracking-wider">{stat.label}</div>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                        {features && (
-                            <div className="flex flex-wrap gap-2 justify-center">
-                                {features.slice(0, 3).map((feat, idx) => (
-                                    <span key={idx} className="text-xs font-medium bg-porcelain text-midnight px-2 py-1 rounded-md">
-                                        {feat}
-                                    </span>
-                                ))}
-                            </div>
-                        )}
-                    </div>
+            {/* Mobile-First Content Structure */}
+            <div
+                style={{ transform: "translateZ(50px)" }}
+                className="relative z-10 flex flex-col items-center justify-start sm:justify-center p-8 sm:p-6 text-center h-full w-full"
+            >
+                <div className="w-16 h-16 sm:w-16 sm:h-16 rounded-2xl bg-porcelain group-hover:bg-midnight group-hover:text-white transition-all duration-500 flex items-center justify-center text-midnight shadow-sm mb-6 sm:mb-6 group-hover:scale-110 group-active:scale-110 group-active:bg-midnight group-active:text-white">
+                    <Icon size={32} strokeWidth={1.5} />
+                </div>
+
+                <h3 className="text-2xl font-serif text-midnight mb-4 leading-tight">{title}</h3>
+
+                <p className="text-subtext font-light text-base leading-relaxed mb-6 sm:line-clamp-3 group-hover:line-clamp-none transition-all">
+                    {description}
+                </p>
+
+                {/* Details Revealed on Hover (Desktop) or Always/Active (Mobile) */}
+                <div className="w-full opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-500 delay-100 flex flex-col gap-4 mt-auto sm:mt-0">
+                    {stats && (
+                        <div className="grid grid-cols-2 gap-4 border-t border-subtext/10 pt-6 sm:pt-4">
+                            {stats.map((stat, idx) => (
+                                <div key={idx} className="text-center">
+                                    <div className="text-signature-start font-bold text-lg">{stat.value}</div>
+                                    <div className="text-xs text-subtext uppercase tracking-wider">{stat.label}</div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                    {features && (
+                        <div className="flex flex-wrap gap-2 justify-center pt-2 sm:pt-0">
+                            {features.slice(0, 3).map((feat, idx) => (
+                                <span key={idx} className="text-[10px] sm:text-xs font-medium bg-porcelain text-midnight px-3 py-1.5 rounded-full border border-transparent group-hover:border-signature-start/20 transition-colors">
+                                    {feat}
+                                </span>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -110,7 +118,7 @@ const RealTimeParallaxCard = ({ title, description, icon: Icon, stats, features,
                 style={{
                     transform: "translateZ(20px)",
                 }}
-                className="absolute inset-0 bg-gradient-to-br from-signature-start/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                className="absolute inset-0 bg-gradient-to-br from-signature-start/5 to-transparent rounded-[2rem] opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500 pointer-events-none"
             />
         </motion.div>
     );

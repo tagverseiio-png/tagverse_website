@@ -10,6 +10,7 @@ import TextReveal from '@/components/ui/TextReveal';
 
 import RealTimeParallaxCard from '@/components/ui/RealTimeParallaxCard';
 import ProcessSteps from '@/components/ui/ProcessSteps';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export default function ServicesPage() {
     const services = [
@@ -52,7 +53,17 @@ export default function ServicesPage() {
             desc: "Enterprise AI chatbots for customer support, sales, and seamless interactions.",
             features: ["24/7 Support", "Natural NLP", "Sentiment Analysis"],
             stats: [{ label: "Response", value: "<1s" }, { label: "Satisfaction", value: "4.9/5" }]
-        }
+        },
+        {
+            id: "item-6",
+            icon: ShieldCheck,
+            title: "AI Chatbots for Business",
+            desc: "Enterprise AI chatbots for customer support, sales, and seamless interactions.",
+            features: ["24/7 Support", "Natural NLP", "Sentiment Analysis"],
+            stats: [{ label: "Response", value: "<1s" }, { label: "Satisfaction", value: "4.9/5" }]
+        },
+
+
     ];
 
     const processSteps = [
@@ -81,22 +92,27 @@ export default function ServicesPage() {
             {/* Content Wrapper */}
             <div className="relative z-10">
                 {/* Hero */}
-                <section className="pt-24 pb-12 px-6 max-w-6xl mx-auto">
+                <section className="pt-32 pb-8 px-6 max-w-6xl mx-auto">
                     <ParallaxSection speed={-0.1}>
-                        <FadeIn>
+                        <ScrollReveal>
                             <h1 className="text-5xl md:text-6xl font-serif text-midnight mb-8 tracking-tight">
                                 <TextReveal text="AI Solutions &" mode="word" /> <span className="text-signature-end italic"><TextReveal text="Automation Services" mode="word" delay={300} /></span>
                             </h1>
-                        </FadeIn>
+                        </ScrollReveal>
                     </ParallaxSection>
                 </section>
 
                 {/* Service Listings */}
-                <section className="px-6 max-w-6xl mx-auto pb-12">
-                    <FadeIn>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {services.map((service, idx) => (
-                                <ParallaxSection key={idx} speed={idx * 0.05} className="h-[400px]">
+                <section className="px-6 max-w-6xl mx-auto pb-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-8">
+                        {services.map((service, idx) => (
+                            <ScrollReveal
+                                key={idx}
+                                direction={idx % 3 === 0 ? 'left' : idx % 3 === 1 ? 'up' : 'right'}
+                                delay={idx * 100}
+                                className="h-full"
+                            >
+                                <ParallaxSection speed={idx * 0.05} className="h-full md:h-[400px]">
                                     <RealTimeParallaxCard
                                         title={service.title}
                                         description={service.desc}
@@ -106,25 +122,25 @@ export default function ServicesPage() {
                                         className="h-full"
                                     />
                                 </ParallaxSection>
-                            ))}
-                        </div>
-                    </FadeIn>
+                            </ScrollReveal>
+                        ))}
+                    </div>
                 </section>
 
                 {/* Process Section - New */}
-                <section className="py-16 bg-white relative">
+                <section className="py-10 bg-white relative">
                     <div className="max-w-4xl mx-auto px-6">
-                        <FadeIn>
-                            <h2 className="text-4xl font-serif text-midnight mb-16 text-center">Our Methodology</h2>
-                        </FadeIn>
+                        <ScrollReveal>
+                            <h2 className="text-4xl font-serif text-midnight mb-10 text-center">Our Methodology</h2>
+                        </ScrollReveal>
                         <ProcessSteps steps={processSteps} />
                     </div>
                 </section>
 
                 {/* Integration Section */}
-                <section className="py-12 bg-white/50 border-t border-white mt-8">
-                    <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                        <FadeIn>
+                <section className="py-10 bg-white/50 border-t border-white mt-8">
+                    <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                        <ScrollReveal>
                             <h2 className="text-4xl font-serif text-midnight mb-6">Seamless Integration</h2>
                             <p className="text-subtext font-light text-lg mb-8 leading-relaxed">
                                 Seamless AI integration into your enterprise infrastructure.
@@ -132,8 +148,8 @@ export default function ServicesPage() {
                             <Link href="/contact">
                                 <Button>Request Demo</Button>
                             </Link>
-                        </FadeIn>
-                        <FadeIn delay={200}>
+                        </ScrollReveal>
+                        <ScrollReveal delay={200}>
                             {/* Integration Benefits List */}
                             <ul className="space-y-6">
                                 <li className="flex items-center gap-4 text-xl font-light text-midnight">
@@ -161,7 +177,7 @@ export default function ServicesPage() {
                                     Scalable Cloud Architecture
                                 </li>
                             </ul>
-                        </FadeIn>
+                        </ScrollReveal>
                     </div>
                 </section>
             </div>
