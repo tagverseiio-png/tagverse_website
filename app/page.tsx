@@ -179,7 +179,7 @@ const WhatIsTagVerse = () => {
                         loop
                         muted
                         playsInline
-                        className="w-full h-full object-cover scale-[1.35] group-hover:scale-[1.4] transition-transform duration-[2s] ease-out will-change-transform"
+                        className="w-full h-full object-cover scale-[1.35] group-hover:scale-[1.4] transition-transform duration-2000 ease-out will-change-transform"
                         poster="/assets/globe-hero.png"
                       >
                         <source src="/assets/intel-bg.mp4" type="video/mp4" />

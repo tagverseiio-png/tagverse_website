@@ -11,16 +11,16 @@ const Navbar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const pathname = usePathname();
 
-    // Hide public navbar on all admin routes
-    if (pathname?.startsWith('/admin')) {
-        return null;
-    }
-
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // Hide public navbar on all admin routes
+    if (pathname?.startsWith('/admin')) {
+        return null;
+    }
 
     const navLinks = [
         { name: 'Home', href: '/' },
@@ -32,7 +32,7 @@ const Navbar = () => {
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${scrolled ? 'bg-porcelain/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-12'
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-custom-bezier ${scrolled ? 'bg-porcelain/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-12'
                 }`}
         >
             <div className="max-w-7xl mx-auto pl-6 pr-4 md:px-6 h-20 md:h-auto flex items-center justify-between pt-4 md:pt-0">

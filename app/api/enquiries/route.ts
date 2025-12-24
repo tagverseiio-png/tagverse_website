@@ -70,7 +70,7 @@ export async function POST(req: Request) {
         }
 
         const enquiry = await Lead.create(body);
-        console.log('✅ Created new enquiry:', enquiry._id);
+        console.log('✅ Created new enquiry:', (enquiry as any)._id);
         return NextResponse.json({ success: true, data: enquiry }, { status: 201 });
     } catch (error: any) {
         console.error('❌ Error creating enquiry:', error);
